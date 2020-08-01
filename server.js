@@ -15,6 +15,10 @@ const expectHandlebars = require("express-handlebars");
 app.engine("handlebars", expectHandlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//Importing routes
+const routes = require("./controllers/burgersController.js");
+
+app.use(routes)
 
 
 //Listening for server requests
