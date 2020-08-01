@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("api/burgers", (req, res) => {
+router.post("/api/burgers", (req, res) => {
     burger.create([
         "name", "devoured"
     ], [
@@ -24,10 +24,17 @@ router.post("api/burgers", (req, res) => {
     });
 });
 
-// router.put("/api/burgers/:id", (req, res) => {
-//     let condition = "id = " + req.params.id;
-//     burger.update({
-//         devoured:
-//     })
-// })
+router.put("/api/burgers/:id", (req, res) => {
+    let condition = "id = " + req.params.id;
+    burger.update({
+        devoured: req.body.devoured
+    }, condition, function(result) {
+        if (result.changedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
+});
+
 module.exports = router;
