@@ -1,5 +1,6 @@
 //Importing ORM data
 const orm = require("../config/orm.js");
+const connection = require("../config/connection.js");
 
 const burger = {
     all: function(cb) {
@@ -14,6 +15,11 @@ const burger = {
       },
       update: function(objColVals, condition, cb) {
           orm.update("burgers", objColVals, condition, function (res) {
+              cb(res);
+          });
+      },
+      delete: function(condition, cb) {
+          orm.delete("burgers", condition, function (res) {
               cb(res);
           });
       }

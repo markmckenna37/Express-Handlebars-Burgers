@@ -1,16 +1,22 @@
 {{!-- Adding HTML template --}}
 <h1>Burgers!!</h1>
 
+<img src="assets/images/burger.png" alt="BurgerTime">
 <h2>Burgers that still need devouring:</h2>
 
 <ul>
-    <ul>
-        {{#each burgers}}
-        {{#unless devoured}}
-        {{> burgers/burger-block devoured=false}}
-        {{/unless}}
-        {{/each}}
-    </ul>
+  <ul>
+    {{#each burgers}}
+    {{#unless devoured}}
+    <li>
+    {{name}}
+    <button class="change-devour" data-id="{{id}}">
+      Devour That Burg!
+    </button>
+    </li>
+    {{/unless}}
+    {{/each}}
+  </ul>
 
 </ul>
 
@@ -18,26 +24,26 @@
 
 <ul>
   {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block devoured=true}}
-    {{/if}}
+  {{#if devoured}}
+  <li>
+  {{name}}
+  <button class="delete-btn" data-id="{{id}}">
+    Delete!
+  </button>
+  </li>
+  {{/if}}
   {{/each}}
 </ul>
 
 <h2>Add a burger:</h2>
 <form class="create-form">
 
-    <div class="form-group">
-        <label for="burg">Burger Name:</label>
-        <input type="text" id="burg" name="name">
-    </div>
+  <div class="form-group">
+    <label for="burg">Burger Name:</label>
+    <input type="text" id="burg" name="name">
+  </div>
 
-    <div class="form-group">
-        <label for="devoured">Has this burger already been devoured?</label><br>
-        <input type="radio" name="devoured" value="0" checked> Not Devoured
-        <input type="radio" name="devoured" value="1"> Devoured!<br>
-    </div>
-      <button type="submit">Add Burger</button>
+  <button type="submit" class="submit">Add Burger</button>
 
 
 
