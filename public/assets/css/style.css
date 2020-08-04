@@ -11,6 +11,8 @@ li {
     flex-direction: column;
     align-items: center;
   }
+  /* Styling for HTML page */
+
   .label {
     font-weight: bold;
   }

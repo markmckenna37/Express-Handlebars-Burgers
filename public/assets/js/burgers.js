@@ -1,3 +1,4 @@
+//Function that changes "devoured" from false to true, then sends that to the burgers api with an ajax call
 $(function() {
     $(".change-devour").on("click", function(event) {
       const id = $(this).data("id");
@@ -19,14 +20,17 @@ $(function() {
       );
     });
 
+    //Function to create a new burger on submit.
 $(".create-form").on("submit", function(event) {
     event.preventDefault();
 
+    //Making a new burger based on the user's value, and setting devoured to false
     const newBurger = {
         name: $("#burg").val().trim(),
         devoured: 0
     };
 
+      //Ajax call to post the new burger to the API, and reload the page
     $.post("/api/burgers", newBurger).then(
     function() {
         console.log("Added your new burger");
@@ -34,6 +38,7 @@ $(".create-form").on("submit", function(event) {
     }
     )
     });
+    //Function to delete a devoured burger.
   $(".delete-btn").on("click", function(event) {
     const buttonId = $(this).data("id");
     $.ajax("/api/burgers/" + buttonId, {

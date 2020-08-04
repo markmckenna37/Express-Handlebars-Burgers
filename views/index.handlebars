@@ -5,6 +5,7 @@
 </div>
 <h2>Burgers that still need devouring:</h2>
 
+{{!-- Section for the undevoured burgers. Handlebars functions to make a button for each burger, unless it's been devoured. --}}
 <ul>
   <ul>
     {{#each burgers}}
@@ -20,7 +21,7 @@
   </ul>
 
 </ul>
-
+{{!-- Section for devoured burgers. Handlebars functions to make buttons for devoured burgers. --}}
 <h2>Burgers that have been devoured:</h2>
 
 <ul>
@@ -35,8 +36,8 @@
   {{/if}}
   {{/each}}
 </ul>
-
-<h2>Add a burger:</h2>
+{{!-- Form group and button for adding burgers. --}}
+<h2>Add a burger to be devoured!!</h2>
 <form class="create-form">
 
   <div class="form-group">

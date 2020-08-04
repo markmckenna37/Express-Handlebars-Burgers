@@ -1,7 +1,7 @@
 //Importing ORM data
 const orm = require("../config/orm.js");
 const connection = require("../config/connection.js");
-
+//orm template for rendering, creating, updating, and deleting burgers
 const burger = {
     all: function(cb) {
         orm.all("burgers", function(res) {

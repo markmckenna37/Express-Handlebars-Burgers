@@ -1,5 +1,5 @@
 const connection = require("../config/connection.js");
-
+//Helper function to add the correct amount of question marks in query connections.
 function printQuestionMarks(num) {
     let arr = [];
   
@@ -29,7 +29,10 @@ function printQuestionMarks(num) {
     return arr.toString();
 }
 
+
+//Orm templates for query connections to mysql database.
 const orm = {
+    //Selecting all burgers from database with parameters fed in from burger.js model
     all: function(tableInput, cb) {
         let query = "SELECT * FROM " + tableInput + ";";
         connection.query(query, function(err, result) {
@@ -39,7 +42,9 @@ const orm = {
             cb(result)
         });
     },
+        //Creating new burgers with parameters fed in from burger.js model
     create: function(table, cols, vals, cb) {
+        //Building our query string
         let query = "INSERT INTO " + table;
         query += " (";
         query += cols.toString();
@@ -56,7 +61,9 @@ const orm = {
             cb(result);
         })
     },
+    //Updating the api with parameters fed in from burger.js model
     update: (table, objColVals, condition, cb) => {
+        //Building our query string
         let query = "UPDATE " + table;
         query += " SET ";
         query += objToSql(objColVals);
@@ -69,6 +76,7 @@ const orm = {
             cb(result);
         });
     },
+    //deleting the selected burger from the burgers api with parameters fed in from the burger.js model
     delete: (table, condition, cb) => {
         let query = "DELETE FROM " + table;
         query += " WHERE ";
@@ -81,4 +89,5 @@ const orm = {
 
 }
 
+//exporting orm functions
 module.exports = orm;
