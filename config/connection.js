@@ -1,5 +1,8 @@
 // Setting up my MySQL connection.
 const mysql = require("mysql");
+require('dotenv').config();
+
+const password = process.env.password;
 
 //if statement to use heroku/local host
 if (process.env.JAWSDB_URL) {
@@ -9,7 +12,7 @@ if (process.env.JAWSDB_URL) {
         host: "localhost",
         port: 3306,
         user: "root",
-        password: "Dmamjm11!",
+        password: password,
         database: "burgers_db"
     });
 }
